@@ -1,0 +1,82 @@
+<!-- HTML View without Results provided -->
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>Finite Model 2</title>
+      <link rel=stylesheet type=text/css href="{{ url_for('.static', filename='model_finite2_print.css') }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('.static', filename='model_finite2_style.css') }}">
+   </head>
+
+   <body>
+      <div id="wrapper"><!-- #wrapper -->
+
+         <nav><!-- top nav -->
+            <div class="menu">
+               <img src="{{ url_for('.static', filename='uzh_Logo.jpg') }}" alt="UZH Logo" align="right"/>
+               <ul>
+                  <li><a href="/main">Home</a></li>
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/references">References</a></li>
+                  <li><a href="/contactus">Contact Us</a></li>
+               </ul>
+            </div>
+         </nav><!-- end of top nav -->
+
+         <header><!-- header -->
+            <h1>Computation: Finite Model 2</h1>
+         </header><!-- end of header -->
+
+         <nav id="nav-menu" class="menu">
+            <div class="menu">
+               <ul>
+                  <li><a href="/modelstatic">Static</a></li>
+                  <li><a href="/modelfinite">Finite</a></li>
+                  <li><a href="/modelfinitebounded">Finite Bounded</a></li>
+                  <li><a href="/modelfinite2">Finite 2</a></li>
+                  <li><a href="/modelinfinite">Infinite</a></li>
+               </ul>
+            </div>
+         </nav>
+
+         <section id="main"><!-- #main content and sidebar area -->
+
+            <section id="content"><!-- #content -->
+               <form method=post action="">
+                  <h2>{{ info_init }}</h2>
+                  <h2>Input Variables</h2>
+                     <table>
+                        <tr>
+                           <td>Rmax (project return in case of success): </td> <td>{{ form.r_max }}</td>
+                           <td>{{ output_r_max }}</td>
+                        </tr>
+                        <tr>
+                           <td>Rmin (return on a safe project): </td> <td>{{ form.r_min }}</td>
+                           <td>{{ output_r_min }}</td>
+                        </tr>
+                        <tr>
+                           <td>b (bailout cost): </td> <td>{{ form.bailout_cost }}</td> <td>{{ output_bailout_cost }}</td>
+                        </tr>
+                        <tr>
+                           <td>c (deadweight cost to the state in case of bank's liquidation): </td> <td>{{ form.deadweight_cost }}</td>
+                           <td>{{ output_deadweight_cost }}</td>
+                        </tr>
+                        <tr>
+                           <td>Discount Rate: </td> <td>{{ form.discount_rate }}</td> <td>{{ output_discount_rate }}</td>
+                        </tr>
+                        <tr>
+                           <td>Nr. of Periods: </td> <td>{{ form.nr_of_periods }}</td> <td>{{ output_nr_of_periods }}</td>
+                        </tr>
+                     </table>
+                  <br />
+                  <p>
+                     <input type="submit" name="btn" value="Calculate">
+                  </p>
+               </form>
+            </section><!-- end of #content -->
+
+         </section><!-- end of #main content and sidebar-->
+
+      </div><!-- #wrapper -->
+   </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+   <title>Infinite Model</title>
+   <link rel=stylesheet type=text/css href="{{ url_for('.static', filename='model_infinite_print.css') }}">
+   <link rel=stylesheet type=text/css href="{{ url_for('.static', filename='model_infinite_style.css') }}">
+</head>
+
+<body>
+<div id="wrapper"><!-- #wrapper -->
+
+	<nav><!-- top nav -->
+		<div class="menu">
+         <img src="{{ url_for('.static', filename='uzh_Logo.jpg') }}" alt="UZH Logo" align="right"/>
+			<ul>
+				<li><a href="/main">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/references">References</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+			</ul>
+		</div>
+	</nav><!-- end of top nav -->
+
+	<header><!-- header -->
+		<h1>Computation: Infinite Model</h1>
+	</header><!-- end of header -->
+
+   <nav id="nav-menu" class="menu">
+      <div class="menu">
+         <ul>
+            <li><a href="/modelstatic">Static</a></li>
+            <li><a href="/modelfinite">Finite</a></li>
+            <li><a href="/modelfinitebounded">Finite Bounded</a></li>
+            <li><a href="/modelfinite2">Finite 2</a></li>
+            <li><a href="/modelinfinite">Infinite</a></li>
+         </ul>
+      </div>
+   </nav>
+
+	<section id="main"><!-- #main content and sidebar area -->
+
+      <section id="content"><!-- #content -->
+         <form method=post action="">
+            <h2>Input Variables</h2>
+               <table>
+                  <tr>
+                     <td>Rmax (project return in case of success): </td> <td>{{ form.r_max }}</td>
+                     <td><input type="submit" name="btn" value="Rmax Down"></td> <td><input type="submit" name="btn" value="Rmax Up"></td>
+                     <td>{{ out_r_max }}</td>
+                  </tr>
+                  <tr>
+                     <td>Rmin (return on a safe project): </td> <td>{{ form.r_min }}</td>
+                     <td><input type="submit" name="btn" value="Rmin Down"></td> <td><input type="submit" name="btn" value="Rmin Up"></td>
+                     <td>{{ out_r_min }}</td>
+                  </tr>
+                  <tr>
+                     <td>b (bailout cost): </td> <td>{{ form.bailout_cost }}</td>
+                     <td><input type="submit" name="btn" value="Bailout Down"></td> <td><input type="submit" name="btn" value="Bailout Up"></td>
+                     <td>{{ out_b }}</td>
+                  </tr>
+                  <tr>
+                     <td>c (deadweight cost to the state in case of bank's liquidation): </td> <td>{{ form.deadweight_cost }}</td>
+                     <td><input type="submit" name="btn" value="Cost Down"></td> <td><input type="submit" name="btn" value="Cost Up"></td>
+                     <td>{{ out_c }}</td>
+                  </tr>
+                  <tr>
+                     <td>Accuracy (indecate the accuracy level for optimal probabilities (0.001 is a good choice)): </td> <td>{{ form.accuracy }}</td>
+                  </tr>
+                  <tr>
+                     <td>Discount Rate: </td> <td>{{ form.discount_rate }}</td>
+                  </tr>
+                  <tr>
+                     <td>R: </td> <td>{{ form.r }}</td>
+                  </tr>
+                  <tr><td></td></tr>
+                  <tr><td></td></tr>
+                  </br></br>
+                  <tr>
+                     <td>Step size: </td> <td>{{ form.step_size }}</td>
+                  </tr>
+               </table>
+            <br />
+            <p>
+               <input type="submit" name="btn" value="Calculate">
+            </p>
+
+            <h2>Result's</h2>
+               <h3>Graphical</h3>
+                  <table border="1">
+                     <tr>
+                        <td>
+                           {% if fig1 != None %}
+                              {{ fig1|safe }}
+                           {% endif %}
+                           <p>
+                              <input type="submit" name="btn" value="Download 1">
+                           </p>
+                        </td>
+                        <td>
+                           {% if fig2 != None %}
+                              {{ fig2|safe }}
+                           {% endif %}
+                           <p>
+                              <input type="submit" name="btn" value="Download 2">
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+
+               <h3>Numerical</h3>
+                  <table border="1">
+                     <tr>
+                        <th> "Variables" </th> <th>"max_EU_value"</th> <th>"optim_pi"</th> <th>"EU_under_opt_c"</th> <th>"EU_diff"</th> <th>"Rel_diff"</th>
+                     </tr>
+                     <tr>
+                        <td>EU</td> <td>{{ opt_eu }}</td> <td>{{ opt_prob_eu }}</td> <td>{{ opt_col_eu }}</td> <td>{{ eu_diff }}</td> <td>{{ eu_diff_rel }}</td>
+                     </tr>
+                     <tr>
+                        <td>EU_b</td> <td>{{ opt_eu_b }}</td> <td>{{ opt_prob_eu_b }}</td> <td>{{ opt_col_eu_b }}</td> <td>{{ eu_b_diff }}</td> <td>{{ eu_b_diff_rel }}</td>
+                     </tr>
+                     <tr>
+                        <td>EU_c</td> <td>{{ opt_eu_c }}</td> <td>{{ opt_prob_eu_c }}</td> <td>{{ opt_eu_c }}</td> <td>0</td> <td>0</td>
+                     </tr>
+                  </table>
+               <br />
+
+         </form>
+      </section><!-- end of #content -->
+
+	</section><!-- end of #main content and sidebar-->
+
+</div><!-- #wrapper -->
+</body>
+</html>
