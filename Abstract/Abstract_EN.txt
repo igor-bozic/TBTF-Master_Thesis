@@ -1,0 +1,3 @@
+Abstract
+
+The goal of this thesis is the development of an experimental environment and mathematical model implementation. The experimental environment in form of a web-based tool provides the ability to simulate scenarios, allowing the illustration of the“Too Big To Fail”concept. The implemented math- ematical model is based on repeated game theory and makes experiments as a purpose for learning, planning or gaming possible. This mathematical model delivers optimal values of a risk choice made by a financial institution at a distinct point of time. Hence a comparison of the past decision and the optimum will be possible.

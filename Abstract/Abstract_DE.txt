@@ -1,0 +1,3 @@
+Abstrakt
+
+Das Ziel dieser Masterarbeit ist eine Implementation von mathematischen Modellen, sowie die Entwicklung einer experimentellen Umgebung. Die experimentelle Umgebung in Form eines Web basierenden Tools, erlaubt Simulationen von Szenarien durchzuführen, die zu einer besseren Illustration des “Too Big To Fail” Konzepts, führen. Das mathematische Modell welches implementiert wird, basiert auf kontinuierlichen Spieltheorien. Die Modelle liefern Optimalwerte bezüglich Risiko, welche von Finanzinstituten und zu beliebigen Zeitpunkten gewählt wurden. Zusätzlich wird es mo ̈glich sein, vergleiche von früheren Entscheidungen und den Optimalwerten, durchführen zu können.
